@@ -1,7 +1,4 @@
 #!/bin/bash
-# Iterate over list, generate key for each user, send it to email
-# Will put all keys into /etc/openvpn/easy-rsa/keys
-# all zips to /root/keygen
 
 function generate_keys {
     client=$1

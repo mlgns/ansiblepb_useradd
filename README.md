@@ -1,4 +1,4 @@
-# ansiblepb_useradd
+# ansiblepb_useradd playbook (pre-alpha v. 0.000001)
 Create user for ldap, mail (zimbra), owncloud and OpenVPN config files. Send config files to new mail.
 
 ### setup

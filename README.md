@@ -1,7 +1,7 @@
 # ansiblepb_useradd
 Create user for ldap, mail (zimbra), owncloud and OpenVPN config files. Send config files to new mail.
 
-### up && run
+### setup
 
 Put manual scripts on dirs:
 
@@ -19,4 +19,9 @@ ldap 0.0.0.1
 zimbra 0.0.0.2
 files 0.0.0.3
 openvpn 0.0.0.4
+```
+### run
+
+```
+$ansible-playbooks newuser.yml
 ```

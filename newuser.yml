@@ -1,0 +1,44 @@
+#                                                                                                                  #
+# ____ Create user for ldap, mail (zimbra), owncloud and OpenVPN config files. Send config files to new mail _____ #
+#                                                                                                                  #
+---
+- name: new employee
+# we need group with hosts (ldap, zimbra, files, openvpn). Filter by inventory_hostname.
+  hosts: adduser
+  remote_user: root
+  vars_prompt:
+  - name: FNAME
+    prompt: "What is the first name of the new employee? (On English)"
+    private: no
+  - name: LNAME
+    prompt: "What is the last name of employee? (On English)"
+    private: no
+  vars:
+    LOGIN: "{{ FNAME[0] }}.{{ LNAME }}"
+    VARMAIL: "{{ LOGIN }}@sapiens.solutions"
+    VARPASS: sapiens
+  tasks:
+  - name: add to ldap
+    shell: bash /root/ldap/new_user.sh  -l {{ LOGIN }} -f {{ FNAME }} -L {{ LNAME }} -e {{ VARMAIL }} -p {{ VARPASS }}
+    when: inventory_hostname == 'ldap'
+    ignore_errors: True
+
+  - name: add to mail (zimbra)
+    shell:  "bash /root/new_user.sh {{ FNAME }} {{ LNAME }}"
+    when: inventory_hostname == 'zimbra'
+    ignore_errors: True
+
+  - name: add to owncloud (files)
+    shell: bash /root/new_user.sh {{ FNAME }} {{ LNAME }}
+    when: inventory_hostname == 'files'
+    ignore_errors: True
+
+  - name: openvpn-keys (zimbra)
+    ignore_errors: True
+    when: inventory_hostname =='openvpn'
+    shell: echo {{ VARMAIL }} > /root/keygen/scripts/new_user.txt | bash /root/keygen/scripts/mass_keygen.sh
+
+  - name: display post install message
+    run_once: true
+    debug:
+      msg: 'User with name {{ FNAME }} {{ LNAME }} and mail {{ VARMAIL }} was created.'

@@ -36,7 +36,7 @@
   - name: openvpn-keys (zimbra)
     ignore_errors: True
     when: inventory_hostname =='openvpn'
-    shell: touch new_user.txt | echo {{ VARMAIL }} > /root/keygen/scripts/new_user.txt | bash /root/keygen/scripts/openvpnfiles_gen.sh
+    shell: echo {{ VARMAIL }} > /root/keygen/scripts/new_user.txt | bash /root/keygen/scripts/openvpnfiles_gen.sh
 
   - name: display post install message
     run_once: true

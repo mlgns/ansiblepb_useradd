@@ -23,5 +23,5 @@ openvpn 0.0.0.4
 ### run
 
 ```
-$ansible-playbooks newuser.yml
+$ ansible-playbooks newuser.yml
 ```

@@ -15,6 +15,7 @@ Put manual scripts on dirs:
 After that you have to change inventory hostnames
 example: 
 ```
+[adduser]
 ldap 0.0.0.1 
 zimbra 0.0.0.2
 files 0.0.0.3

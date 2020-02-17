@@ -1,4 +1,4 @@
-# ansiblepb_useradd playbook (pre-alpha v. 0.000001)
+# ansiblepb_useradd playbook (pre-alpha v. 0.01)
 Create user for ldap, mail (zimbra), owncloud. Create OpenVPN config files. Сonfig files to new mail.
 
 ### setup

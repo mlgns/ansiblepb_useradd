@@ -1,4 +1,5 @@
-# useradd playbook for zimbra, ldap, owncloud, openvpn (and send cfg to email). 
+# useradd playbook for zimbra, ldap, owncloud, openvpn  
+
 Create user for ldap, mail (zimbra), owncloud. Create OpenVPN config files. Сonfig files to new mail.
 
 ### setup
